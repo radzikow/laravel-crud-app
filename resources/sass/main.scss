@@ -1,0 +1,71 @@
+// Variables
+@import "variables";
+
+// Main styles
+html,
+body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+
+  #app {
+    main {
+      // Welcome page
+      .main-wrapper {
+        height: 200px;
+
+        ul {
+          margin-bottom: 0 !important;
+        }
+
+        .title-wrapper {
+          margin-top: 150px !important;
+          height: 50%;
+
+          .welcome-title {
+            h1 {
+              font-size: 3em;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .button-wrapper {
+          height: 50%;
+
+          div {
+            a {
+              border-radius: 30px;
+              padding: 8px 30px;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      // Products page
+      .table-products {
+        border: 1px solid #e8ebee;
+
+        tbody {
+          th,
+          td {
+            vertical-align: middle !important;
+
+            .btn {
+              padding: 1px 12px !important;
+            }
+
+            .badge {
+              font-weight: 300 !important;
+              padding: 0.35em 0.5em !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
