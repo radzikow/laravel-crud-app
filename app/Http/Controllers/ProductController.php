@@ -53,6 +53,16 @@ class ProductController extends Controller
   {
     $searchTest = $request->input('searchTest');
 
+    $validator = Validator::make($request->all(), [
+      'searchTest' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+      return back()
+        ->withErrors($validator)
+        ->withInput();
+    }
+
     $products = DB::table('products')
       ->where('name', 'LIKE', '%' . $searchTest . '%')
       ->orWhere('description', 'LIKE', '%' . $searchTest . '%')

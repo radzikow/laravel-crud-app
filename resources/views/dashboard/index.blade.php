@@ -17,6 +17,16 @@
       {{-- Search form --}}
       <form action="{{ url('/dashboard/search') }}" method="POST" role="search">
         @csrf
+        {{-- Messages --}}
+        @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Search products" aria-label="Search products"
             aria-describedby="button-addon2" name="searchTest">
