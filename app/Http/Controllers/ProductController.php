@@ -14,7 +14,7 @@ class ProductController extends Controller
   // Display products list (visitors)
   public function products()
   {
-    $products = DB::table('products')->get();
+    $products = Product::get();
 
     return view('products', ['products' => $products]);
   }
@@ -23,7 +23,7 @@ class ProductController extends Controller
   // Display product details (visitors)
   public function details($id)
   {
-    $product = DB::table('products')->find($id);
+    $product = Product::find($id);
 
     return view('product', ['product' => $product]);
   }
@@ -34,8 +34,7 @@ class ProductController extends Controller
   {
     $searchTest = $request->input('searchTest');
 
-    $products = DB::table('products')
-      ->where('name', 'LIKE', '%' . $searchTest . '%')
+    $products = Product::where('name', 'LIKE', '%' . $searchTest . '%')
       ->orWhere('description', 'LIKE', '%' . $searchTest . '%')
       ->orderBy('created_at', 'desc')
       ->get();
@@ -63,8 +62,7 @@ class ProductController extends Controller
         ->withInput();
     }
 
-    $products = DB::table('products')
-      ->where('name', 'LIKE', '%' . $searchTest . '%')
+    $products = Product::where('name', 'LIKE', '%' . $searchTest . '%')
       ->orWhere('description', 'LIKE', '%' . $searchTest . '%')
       ->orderBy('created_at', 'desc')
       ->get();
@@ -143,7 +141,7 @@ class ProductController extends Controller
   // Display edit product form
   public function edit($id)
   {
-    $product = DB::table('products')->find($id);
+    $product = Product::find($id);
 
     return view('/dashboard/update', ['product' => $product]);
   }
